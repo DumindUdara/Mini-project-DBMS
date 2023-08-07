@@ -2,7 +2,7 @@
 Hostel Room allocation system project
 
 ## INTODUCTION 
-DATABASE CURD OPERATION 
+### DATABASE CURD OPERATION 
 CRUD stands for Create, Read (Retrieve), Update, and Delete, which are the fundamental operations used in database management to interact with data. These operations are essential for managing the data stored in a database. Here's a brief explanation of each CRUD operation.
 I.	Create (C)
 Create operation is used to add new data or records to the database. It involves inserting new rows into the tables. For example, when a new student registers, their information is added to the "student" table.
@@ -11,7 +11,8 @@ INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
 II.	Read (R)
 Read operation is used to retrieve data from the database. It involves querying the database to fetch specific records or information. 
 For example, when a user wants to view all students in a particular department, a SELECT query is used to retrieve the data.
-SELECT * FROM table_name WHERE condition;
+
+        SELECT * FROM table_name WHERE condition;
 
 III.	Update (U):
 Update operation is used to modify existing data in the database. It involves changing the values of certain columns in the rows of a table. 
