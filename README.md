@@ -51,119 +51,98 @@ Let's focus on implementing a simple room management system using CRUD operation
 #### Hostel
 ##### Crate Query:
 ###### Create Tables
-CREATE TABLE hostel(
-    Hostel_id int(10) NOT NULL AUTO_INCREMENT,
-    Hostel_name varchar(255) NOT NULL,
-    current_no_of_rooms varchar(255) DEFAULT NULL,
-    No_of_rooms varchar(255) DEFAULT NULL,
-    No_of_students varchar(255) DEFAULT NULL,
-    CONSTRAINT PRIMARY KEY (Hostel_id)
-);
 
-02.2.1.2: Describe Query: 
-describe hostel; --> to describe table
-or
-desc hostel; --> to describe table
+        CREATE TABLE hostel(
+            Hostel_id int(10) NOT NULL AUTO_INCREMENT,
+            Hostel_name varchar(255) NOT NULL,
+            current_no_of_rooms varchar(255) DEFAULT NULL,
+            No_of_rooms varchar(255) DEFAULT NULL,
+            No_of_students varchar(255) DEFAULT NULL,
+            CONSTRAINT PRIMARY KEY (Hostel_id)
+        );
 
+##### Describe Query: 
+
+        describe hostel; --> to describe table
+        or
+        desc hostel; --> to describe table
+
+ ##### Insert Query 
  
+        insert into hostel(Hostel_name,current_no_of_rooms,No_of_rooms,No_of_students) values('Boys Hostel-1','20','50','100');
 
-02.2.1.3: Insert Query 
-insert into hostel(Hostel_name,current_no_of_rooms,No_of_rooms,No_of_students) 
-values('Boys Hostel-1','20','50','100');
+        insert into hostel(Hostel_name,current_no_of_rooms,No_of_rooms,No_of_students) values ('Boys Hostel-2','50','50','200'),('Girls Hostel-                1','10','90','20'), ('Girls Hostel-2','30','50','100'),('Out side -1','20','50','100'),('Out Side -2','20','50','100');
 
-insert into hostel(Hostel_name,current_no_of_rooms,No_of_rooms,No_of_students) values
-('Boys Hostel-2','50','50','200'),
-('Girls Hostel-1','10','90','20'),
-('Girls Hostel-2','30','50','100'),
-('Out side -1','20','50','100'),
-('Out Side -2','20','50','100');
+##### Select Query
 
-02.2.1.4: Select Query 
-select * from hostel;
+        select * from hostel;
+##### Update Query 
 
- 
+We want to rename ‘Out side - 2’ to ‘Update Outside Hostel’.
 
+        UPDATE hostel SET Hostel_name = 'Update Outside Hostel' WHERE Hostel_id = 6;
 
+#### Hostel Manager
+##### Create Query:
 
+        CREATE TABLE hostel_manager (
+            Hostel_man_id int(10) NOT NULL AUTO_INCREMENT,
+            Username varchar(20) NOT NULL,
+            Fname varchar(20) NOT NULL,
+            Lname varchar(205) NOT NULL,
+            Mob_no varchar(15) NOT NULL,
+            Hostel_id int(10) NOT NULL,
+            Pwd varchar(50) NOT NULL,
+            Isadmin tinyint(1) DEFAULT '0',
+            CONSTRAINT PRIMARY KEY (Hostel_man_id),
+            CONSTRAINT UNIQUE (Username),
+            CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id)
+        ) ;
+        
+##### Insert Query 
+        INSERT INTO hostel_manager (Username, Fname, Lname, Mob_no, Pwd, Isadmin)
+        VALUES ('Dumindu', 'Dumindu', 'Udara', '0750503932', '11', 1);
+        
+        INSERT INTO hostel_manager (Username, Fname, Lname, Mob_no, Hostel_id, Pwd, Isadmin)
+        VALUES ('Oshadhi', 'Oshadhi', 'Wikramasinghe', '0750000932', 2, '110', 1),
+               ('Gayantha', 'Gayantha', 'Iroshan', '0750500932', 3, '11', 1);
 
-02.2.1.5: Update Query 
-	We want to rename ‘Out side - 2’ to ‘Update Outside Hostel’.
-UPDATE hostel SET Hostel_name = 'Update Outside Hostel' WHERE Hostel_id = 6;
+##### Select Query:
+        select * from hostel_manager;
 
- 
+##### Update Query :
 
-02.2.2: Hostel Manager
-02.2.2.1: Create Query:
-CREATE TABLE hostel_manager (
-    Hostel_man_id int(10) NOT NULL AUTO_INCREMENT,
-    Username varchar(20) NOT NULL,
-    Fname varchar(20) NOT NULL,
-    Lname varchar(205) NOT NULL,
-    Mob_no varchar(15) NOT NULL,
-    Hostel_id int(10) NOT NULL,
-    Pwd varchar(50) NOT NULL,
-    Isadmin tinyint(1) DEFAULT '0',
-    CONSTRAINT PRIMARY KEY (Hostel_man_id),
-    CONSTRAINT UNIQUE (Username),
-    CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id)
-) ;
-
- 
-02.2.2.2: Insert Query 
-INSERT INTO hostel_manager (Username, Fname, Lname, Mob_no, Pwd, Isadmin)
-VALUES ('Dumindu', 'Dumindu', 'Udara', '0750503932', '11', 1);
-
-INSERT INTO hostel_manager (Username, Fname, Lname, Mob_no, Hostel_id, Pwd, Isadmin)
-VALUES ('Oshadhi', 'Oshadhi', 'Wikramasinghe', '0750000932', 2, '110', 1),
-       ('Gayantha', 'Gayantha', 'Iroshan', '0750500932', 3, '11', 1);
-
-
-02.2.2.3: Select Query:
-select * from hostel_manager;
-
- 
-02.2.2.4: Update Query :
 We want to update Duminda’s user name, mobile number and password.
-UPDATE hostel_manager SET Username = 'update Dumindu',Mob_no = '01700222576', Pwd = 'udaranew' WHERE hostel_man_id = 1; 
 
+        UPDATE hostel_manager SET Username = 'update Dumindu',Mob_no = '01700222576', Pwd = 'udaranew' WHERE hostel_man_id = 1; 
 
+##### Delete Query 
 
-
-
-
-
-02.2.2.5: Delete Query 
 I need to delete Gayantha in admin board.
-DELETE FROM hostel_manager WHERE Username = 'Gayantha';
+
+        DELETE FROM hostel_manager WHERE Username = 'Gayantha';
 
 
-02.2.3: Room
-02.2.3.1: Create Query 
-CREATE TABLE room (
-    Room_id int(10) NOT NULL AUTO_INCREMENT,
-    Hostel_id int(10) NOT NULL,
-    Room_No int(10) NOT NULL,
-    Allocated tinyint(1) DEFAULT '0',
-    PRIMARY KEY (Room_id),
-    CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id)
-);
+#### Room
 
+##### Create Query 
 
+        CREATE TABLE room (
+            Room_id int(10) NOT NULL AUTO_INCREMENT,
+            Hostel_id int(10) NOT NULL,
+            Room_No int(10) NOT NULL,
+            Allocated tinyint(1) DEFAULT '0',
+            PRIMARY KEY (Room_id),
+            CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id)
+        );
 
+##### Insert Query 
 
+        INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('1',1,1);
+        INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('1',11,1),('1',10,1), ('1',19,1), ('1',22,1), ('1',44,1), ('1',9,1), ('1',12,1);
+        INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('2',2,1), ('2',10,1), ('2',55,1);
 
-
-
-
-02.2.3.2: Insert Query 
-INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('1',1,1);
-
-INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('1',11,1), 
-('1',10,1), ('1',19,1), ('1',22,1), ('1',44,1), ('1',9,1), ('1',12,1);
-
-INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('2',2,1), ('2',10,1), ('2',55,1);
-
-02.2.3.3: Select Query 
+##### Select Query 
 select * from room;
 
  
