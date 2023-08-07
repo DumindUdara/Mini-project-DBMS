@@ -143,142 +143,122 @@ I need to delete Gayantha in admin board.
         INSERT INTO room (Hostel_id,Room_No,Allocated) VALUES ('2',2,1), ('2',10,1), ('2',55,1);
 
 ##### Select Query 
-select * from room;
 
- 
-02.2.3.4: Update and Delete Query:
-I want to update Room number 12 to 99 and delete Room id 11 row. 
-Update 
-UPDATE room SET Room_No = '99' WHERE Room_id = 8;
-Delete 
-DELETE FROM room WHERE Room_id = 11;
+        select * from room;
 
- 
+##### Update and Delete Query:
 
+I want to update Room number 12 to 99 and delete Room id 11 row.
 
-02.2.4: Furniture 
-02.2.4.1: Create Query:
-CREATE TABLE furniture (
-  Furniture_id int(100) NOT NULL AUTO_INCREMENT,
-      Furniture_type varchar(255) NOT NULL,
-      Hostel_id int(10) NOT NULL,
-      Room_id int(10) DEFAULT NULL,
-      PRIMARY KEY (Furniture_id),
-      CONSTRAINT FOREIGN KEY (Room_id) REFERENCES Room (Room_id),
-      CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id)
-);
+###### Update 
 
- 
-02.2.4.2: Insert Query 
-INSERT INTO furniture (Furniture_type,Hostel_id,Room_id) VALUES ('Chair',1,10);
-INSERT INTO furniture (Furniture_type,Hostel_id,Room_id) VALUES ('Bed',2,2),('Chair',2,10),('Table',2,55);
+        UPDATE room SET Room_No = '99' WHERE Room_id = 8;
+###### Delete 
 
-02.2.4.3: Select Query
-  
+        DELETE FROM room WHERE Room_id = 11;
 
+#### Furniture 
+##### Create Query:
 
+        CREATE TABLE furniture (
+          Furniture_id int(100) NOT NULL AUTO_INCREMENT,
+              Furniture_type varchar(255) NOT NULL,
+              Hostel_id int(10) NOT NULL,
+              Room_id int(10) DEFAULT NULL,
+              PRIMARY KEY (Furniture_id),
+              CONSTRAINT FOREIGN KEY (Room_id) REFERENCES Room (Room_id),
+              CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id)
+        );
 
+##### Insert Query
 
-02.2.5: Student
-02.2.5.1: Create Query:
-CREATE TABLE student (
-    Student_id varchar(20) NOT NULL,
-    Fname varchar(60) NOT NULL,
-    Lname varchar(60) NOT NULL,
-    Mob_no varchar(15) NOT NULL,
-    Dept varchar(10) NOT NULL,
-    Year_of_study varchar(10) NOT NULL,
-    Pwd varchar(20) NOT NULL,
-    Hostel_id int(10) DEFAULT NULL,
-    Room_id int(10) DEFAULT NULL,
-    PRIMARY KEY (Student_id),
-    CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id),
-    CONSTRAINT FOREIGN KEY (Room_id) REFERENCES Room (Room_id)
-);
+        INSERT INTO furniture (Furniture_type,Hostel_id,Room_id) VALUES ('Chair',1,10);
+        INSERT INTO furniture (Furniture_type,Hostel_id,Room_id) VALUES ('Bed',2,2),('Chair',2,10),('Table',2,55);
 
+##### Select Query
+          SELECT * FROM furniture;
+          
+#### Student
 
+##### Create Query:
 
+        CREATE TABLE student (
+            Student_id varchar(20) NOT NULL,
+            Fname varchar(60) NOT NULL,
+            Lname varchar(60) NOT NULL,
+            Mob_no varchar(15) NOT NULL,
+            Dept varchar(10) NOT NULL,
+            Year_of_study varchar(10) NOT NULL,
+            Pwd varchar(20) NOT NULL,
+            Hostel_id int(10) DEFAULT NULL,
+            Room_id int(10) DEFAULT NULL,
+            PRIMARY KEY (Student_id),
+            CONSTRAINT FOREIGN KEY (Hostel_id) REFERENCES Hostel (Hostel_id),
+            CONSTRAINT FOREIGN KEY (Room_id) REFERENCES Room (Room_id)
+        );
 
+##### Insert Query 
 
+        INSERT INTO student VALUES ('AA1010', 'Test_1', 'Test_01', '07854543632', 'Engineering', '2025', '00' , 1,11);
 
+        INSERT INTO student (Student_id, Fname, Lname, Mob_no, Dept, Year_of_study, Pwd, Hostel_id, Room_id)VALUES
+                ('AA1011', 'Test_2', 'Test_02', '07754543632', 'Engineering', '2025', '001', 1, 10),
+                ('AA1022', 'Test_3', 'Test_03', '0794543632', 'IT', '2024', '99', 1, 9),
+                ('AA1033', 'Test_4', 'Test_04', '01154543632', 'Music', '2023', '400', 2, 10),
+                ('AA1000', 'Test_5', 'Test_05', '07855543632', 'IT', '2025', '500', 2, 55),
+                ('AAB2020', 'Test_6', 'Test_06', '07654543632', 'Agri', '2025', 'xx0', 1, 44);
 
+##### Select Query  
 
+###### Update and Delete Query 
 
-
-02.2.5.2: Insert Query 
-INSERT INTO student 
-VALUES ('AA1010', 'Test_1', 'Test_01', '07854543632', 'Engineering', '2025', '00' , 1,11);
-
-INSERT INTO student (Student_id, Fname, Lname, Mob_no, Dept, Year_of_study, Pwd, Hostel_id, Room_id)
-VALUES('AA1011', 'Test_2', 'Test_02', '07754543632', 'Engineering', '2025', '001', 1, 10),
-      ('AA1022', 'Test_3', 'Test_03', '0794543632', 'IT', '2024', '99', 1, 9),
-      ('AA1033', 'Test_4', 'Test_04', '01154543632', 'Music', '2023', '400', 2, 10),
-      ('AA1000', 'Test_5', 'Test_05', '07855543632', 'IT', '2025', '500', 2, 55),
-      ('AAB2020', 'Test_6', 'Test_06', '07654543632', 'Agri', '2025', 'xx0', 1, 44);
-
-
-02.2.5.3: Select Query  
-
-02.2.5.4: Update and Delete Query 
 I want to update student id of Test_6 and AA1000 student remove the table. 
-UPDATE student SET Student_id = 'UPDATE2020' WHERE Fname = 'Test_6';
 
-DELETE FROM student WHERE Student_id = 'AA1000';
+        UPDATE student SET Student_id = 'UPDATE2020' WHERE Fname = 'Test_6';
+        DELETE FROM student WHERE Student_id = 'AA1000';
+        
+#### Message
+##### Create Query:
 
+        CREATE TABLE message(
+            msg_id int(10) NOT NULL AUTO_INCREMENT,
+            sender_id varchar(20) DEFAULT NULL,
+            receiver_id varchar(40) DEFAULT NULL,
+            hostel_id int(10) DEFAULT NULL,
+            subject_h varchar(255) DEFAULT NULL,
+            message varchar(255) DEFAULT NULL,
+            msg_date varchar(60) DEFAULT NULL,
+            msg_time varchar(60) DEFAULT NULL,
+            CONSTRAINT PRIMARY KEY (msg_id),
+            CONSTRAINT FOREIGN KEY (hostel_id) REFERENCES Hostel (Hostel_id)
+        );
 
+##### Insert Query
+        INSERT INTO message (sender_id, receiver_id, hostel_id, subject_h, message, msg_date, msg_time)
+        VALUES ('text@gmail.com', 'admin@gmail.com', 2, 'Change my Room', 'I want to go to the outside hostel', '2023-07-06', '8.00 am');
 
+#### Visitor 
+##### Crate Query 
 
+        CREATE TABLE visitor (
+            visitor_id INT(10) NOT NULL AUTO_INCREMENT,
+            in_time VARCHAR(5) DEFAULT NULL,
+            out_time VARCHAR(5) DEFAULT NULL,
+            date VARCHAR(30) DEFAULT NULL,
+            v_name VARCHAR(69) NOT NULL,
+            Student_id VARCHAR(20) NOT NULL,
+            PRIMARY KEY (visitor_id),
+            CONSTRAINT FOREIGN KEY (Student_id) REFERENCES student (Student_id)
+        );
+        
+##### Insert Query
 
+        INSERT INTO visitor (in_time, out_time, date, v_name, Student_id) VALUES ('9.00','12.00','2023-03-2','Kaplana','AA1022');
 
+        INSERT INTO visitor (in_time, out_time, date, v_name, Student_id) VALUES ('3.00','5.00','2023-03-4','Surani','AA1033');
 
-
-
-02.2.6: Message
-02.2.6.1: Create Query:
-CREATE TABLE message(
-    msg_id int(10) NOT NULL AUTO_INCREMENT,
-    sender_id varchar(20) DEFAULT NULL,
-    receiver_id varchar(40) DEFAULT NULL,
-    hostel_id int(10) DEFAULT NULL,
-    subject_h varchar(255) DEFAULT NULL,
-    message varchar(255) DEFAULT NULL,
-    msg_date varchar(60) DEFAULT NULL,
-    msg_time varchar(60) DEFAULT NULL,
-    CONSTRAINT PRIMARY KEY (msg_id),
-    CONSTRAINT FOREIGN KEY (hostel_id) REFERENCES Hostel (Hostel_id)
-);
-
- 
-
-02.2.6.2: Insert Query
-INSERT INTO message (sender_id, receiver_id, hostel_id, subject_h, message, msg_date, msg_time)
-VALUES ('text@gmail.com', 'admin@gmail.com', 2, 'Change my Room', 'I want to go to the outside hostel', '2023-07-06', '8.00 am');
-
-
-
-02.2.7: Visitor 
-02.2.7.1: Crate Query 
-CREATE TABLE visitor (
-    visitor_id INT(10) NOT NULL AUTO_INCREMENT,
-    in_time VARCHAR(5) DEFAULT NULL,
-    out_time VARCHAR(5) DEFAULT NULL,
-    date VARCHAR(30) DEFAULT NULL,
-    v_name VARCHAR(69) NOT NULL,
-    Student_id VARCHAR(20) NOT NULL,
-    PRIMARY KEY (visitor_id),
-    CONSTRAINT FOREIGN KEY (Student_id) REFERENCES student (Student_id)
-);
-
- 
-
-02.2.7.2: Insert Query 
-INSERT INTO visitor (in_time, out_time, date, v_name, Student_id) 
-VALUES ('9.00','12.00','2023-03-2','Kaplana','AA1022');
-
-INSERT INTO visitor (in_time, out_time, date, v_name, Student_id) 
-VALUES ('3.00','5.00','2023-03-4','Surani','AA1033');
-
-02.2.7.3: Select Query 
+##### Select Query 
+        SELECT * FROM visitor;
  
 
 
