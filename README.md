@@ -4,44 +4,53 @@ Hostel Room allocation system project
 ## INTODUCTION 
 ### DATABASE CURD OPERATION 
 CRUD stands for Create, Read (Retrieve), Update, and Delete, which are the fundamental operations used in database management to interact with data. These operations are essential for managing the data stored in a database. Here's a brief explanation of each CRUD operation.
+
 I.	Create (C)
+
 Create operation is used to add new data or records to the database. It involves inserting new rows into the tables. For example, when a new student registers, their information is added to the "student" table.
-INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
+
+        INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
 
 II.	Read (R)
+
 Read operation is used to retrieve data from the database. It involves querying the database to fetch specific records or information. 
 For example, when a user wants to view all students in a particular department, a SELECT query is used to retrieve the data.
 
         SELECT * FROM table_name WHERE condition;
 
 III.	Update (U):
+
 Update operation is used to modify existing data in the database. It involves changing the values of certain columns in the rows of a table. 
 For example, when a student changes their phone number, the "Mob_no" field is updated in the "student" table.
-UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+
+        UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
 
 IV.	Delete (D)
+
 Delete operation is used to remove data or records from the database. It involves deleting specific rows from the tables. 
 For example, when a student graduates, their information can be removed from the "student" table.
-DELETE FROM table_name WHERE condition;
 
-truncate table_name WHERE condition;
-	truncate query is recommended query greater than delete query in table. 
-
+        DELETE FROM table_name WHERE condition;
+        truncate table_name WHERE condition;
+        # truncate query is recommended query greater than delete query in table. 
 Delete Database: 
-drop database Database_Name;
+
+        drop database Database_Name;
+        
 Let's focus on implementing a simple room management system using CRUD operations in the context of hostel management. This system will handle the basic functionalities of adding, viewing, updating, and deleting hostel room information and student details.
 
-Section 02: QUERIES IN OUR PROJECT 
-02.1: Database
-02.1.1: Create Database:
-CREATE DATABASE hostel_management_system_campus;
-02.1.2: Use created database:
-use hostel_management_system_campus;
+## QUERIES IN PROJECT
+### Database
+#### Create Database:
 
-02.2: Tables 
-02.2.1: Hostel
-02.2.1.1: Crate Query:
-	Create Tables
+        CREATE DATABASE hostel_management_system_campus;
+#### Use created database:
+        use hostel_management_system_campus;
+
+### Tables 
+#### Hostel
+##### Crate Query:
+###### Create Tables
 CREATE TABLE hostel(
     Hostel_id int(10) NOT NULL AUTO_INCREMENT,
     Hostel_name varchar(255) NOT NULL,
