@@ -1,9 +1,7 @@
 # Mini-project-DBMS
 Hostel Room allocation system project
 
-
-TECHNICAL REPORT
-Section 01: INTODUCTION 
+## INTODUCTION 
 DATABASE CURD OPERATION 
 CRUD stands for Create, Read (Retrieve), Update, and Delete, which are the fundamental operations used in database management to interact with data. These operations are essential for managing the data stored in a database. Here's a brief explanation of each CRUD operation.
 I.	Create (C)
