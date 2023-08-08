@@ -94,7 +94,7 @@ insert into hostel(Hostel_name,current_no_of_rooms,No_of_rooms,No_of_students) v
 				('Girls Hostel-2','30','50','100'),
 				('Out side -1','20','50','100'),
 				('Out Side -2','20','50','100');
-----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO hostel_manager (Username, Fname, Lname, Mob_no, Pwd, Isadmin)
 VALUES ('Dumindu', 'Dumindu', 'Udara', '0750503932', '11', 1);
