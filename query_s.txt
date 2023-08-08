@@ -131,7 +131,7 @@ VALUES
 INSERT INTO visitor (in_time, out_time, date, v_name, Student_id) VALUES ('9.00','12.00','2023-03-2','Kaplana','AA1022');
 INSERT INTO visitor (in_time, out_time, date, v_name, Student_id) VALUES ('3.00','5.00','2023-03-4','Surani','AA1033');
 
------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 INSERT INTO message (sender_id, receiver_id, hostel_id, subject_h, message, msg_date, msg_time)
