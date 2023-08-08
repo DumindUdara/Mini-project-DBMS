@@ -104,7 +104,7 @@ INSERT INTO hostel_manager (Username, Fname, Lname, Mob_no, Hostel_id, Pwd, Isad
 VALUES
 	('Oshadhi', 'Oshadhi', 'Wikramasinghe', '0750000932', 2, '110', 1),
   	('Gayantha', 'Gayantha', 'Iroshan', '0750500932', 3, '11', 1);
----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO ROOM (Hostel_id,Room_No,Allocated) VALUES ('1',1,1);
 
 INSERT INTO ROOM (Hostel_id,Room_No,Allocated) VALUES ('1',11,1), 
